@@ -1,8 +1,26 @@
-/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --blue: #507ec3;
+    --white: #f0f0f0;
+    --grey-fill: #f7faff;
+    --grey-outline: #d0d0d0;
+}
+
+.inter-thick {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* styles */
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: "Inter", sans-serif;
     background-color: #f0f0f0;
+    margin: 0;
+    background-color: var(--white);
 }
 
 h1 {
@@ -47,4 +65,19 @@ button {
     border: 1px solid #ccc;   /* Optional: Add a border around the box */
     padding: 10px;            /* Optional: Add padding inside the box */
     background-color: #fff;   /* Optional: Set background color */
+}
+
+.header {
+    width: 100vw;
+    background: var(--blue);
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    color: var(--white);
+    margin: 0;
+
 }
