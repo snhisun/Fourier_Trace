@@ -6,6 +6,8 @@
     --white: #f0f0f0;
     --grey-fill: #f7faff;
     --grey-outline: #d0d0d0;
+    --hover-grey-outline: #c0c0c0;
+    --background: #f0f0f0;
 }
 
 .inter-thick {
@@ -23,7 +25,7 @@
 body {
     text-align: center;
     font-family: "Inter", sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--background);
     margin: 0;
     background-color: var(--white);
 }
@@ -113,7 +115,8 @@ button {
     align-items: center;
     justify-content: center;
     margin-top: 5vh;
-    margin-left: 5vw;
+    margin-left: 2em;
+    width: 100%;
 }
 
 /* canvas styling */
@@ -146,6 +149,7 @@ button {
 #clearButton {
     border: 3px solid var(--soft-blue);
     color: var(--blue);
+    background: var(--background)
 }
 
 #clearButton:hover {
@@ -164,4 +168,74 @@ button {
 #approximateButton:hover {
     background-color: var(--soft-blue);
     cursor: pointer;
+}
+
+/* controls */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 2em;
+    gap: 2em;
+}
+
+.controls label {
+    font-size: 1.25em;
+}
+
+.slider-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.slider-n-num {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+    font-size: 1.25em;
+    margin-top: 0.75em;
+}
+
+/* yes, all this is for one fucking slider */
+input[type="range"]{
+    width: 85%;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--soft-blue);
+    cursor: pointer;
+    margin-top: -8px;
+    transition: background 0.25s ease;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px; /* Adjust the height of the track */
+    background: var(--grey-outline);
+    border-radius: 50px;
+    transition: background 0.25s ease;
+}
+
+/* Hover styles */
+input[type="range"]:hover::-webkit-slider-thumb {
+    background: var(--blue);
+}
+
+input[type="range"]:hover::-webkit-slider-runnable-track {
+    background: var(--hover-grey-outline);
 }

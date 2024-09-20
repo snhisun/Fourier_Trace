@@ -4,18 +4,32 @@ const ctx = canvas.getContext('2d');
 let isDrawing = false;
 let path = [];
 
-// Set a large brush size
-const brushSize = 8;
-
 // Get controls
 const coefficientsSlider = document.getElementById('coefficients');
 const coeffValueDisplay = document.getElementById('coeffValue');
+
+const brushSlider = document.getElementById('brush');
+const brushValueDisplay = document.getElementById('brushValue');
+
+const animationSpeedSlider = document.getElementById('animation-slider');
+const animationSpeedValueDisplay = document.getElementById('animationValue');
+
 const clearButton = document.getElementById('clearButton');
 const approximateButton = document.getElementById('approximateButton');
 
-// Update coefficient display
+// establish variables
+let brushSize = brushSlider.value;
+let animationSpeed = animationSpeedSlider.value;
+
+// Update displays
 coefficientsSlider.oninput = function() {
     coeffValueDisplay.textContent = this.value;
+};
+brushSlider.oninput = function() {
+    brushValueDisplay.textContent = this.value;
+};
+animationSpeedSlider.oninput = function() {
+    animationSpeedValueDisplay.textContent = this.value;
 };
 
 // Event listeners for drawing
@@ -29,6 +43,7 @@ clearButton.addEventListener('click', clearCanvas);
 approximateButton.addEventListener('click', startApproximation);
 
 function startDrawing(e) {
+    const brushSize = parseInt(brushSlider.value);
     isDrawing = true;
     path = [];
     ctx.lineWidth = brushSize;
