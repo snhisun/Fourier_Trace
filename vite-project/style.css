@@ -56,17 +56,20 @@ button {
 .equation-box {
     margin-top: 20px;
     text-align: left;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 30vw;
     word-wrap: break-word;
-    height: 300px;            /* Set the desired height of the box */
+    height: 50vh;            /* Set the desired height of the box */
     overflow-y: auto;         /* Enable vertical scrolling */
     border: 1px solid #ccc;   /* Optional: Add a border around the box */
     padding: 10px;            /* Optional: Add padding inside the box */
     background-color: #fff;   /* Optional: Set background color */
 }
 
+.equation-box * {
+    word-wrap: break-word;
+}
+
+/* header styling */
 .header {
     width: 100vw;
     background: var(--blue);
@@ -80,4 +83,36 @@ button {
     color: var(--white);
     margin: 0;
 
+}
+
+/* contents layout */
+.contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.canvas-n-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-left: 5vw;
+}
+
+.controls-n-equation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-left: 5vw;
+}
+
+/* canvas styling */
+#drawCanvas {
+    width: 800px;
+    height: 600px;
+    display: block;
+    margin: 0 auto;
 }

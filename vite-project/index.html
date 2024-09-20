@@ -14,18 +14,23 @@
     <div class="header">
         <h1>Reverse Desmos - Fourier Drawings</h1>
     </div>
-    <canvas id="drawCanvas" width="800" height="600"></canvas>
-    <div class="controls">
-        <label for="coefficients">Number of Fourier Coefficients:</label>
-        <input type="range" id="coefficients" min="1" max="1000" value="100">
-        <span id="coeffValue">100</span>
+    <div class="contents">
+        <div class="canvas-n-buttons">
+            <canvas id="drawCanvas" width="800" height="600"></canvas>
+            <div class="buttons">
+                <button id="clearButton">Clear Drawing</button>
+                <button id="approximateButton">Start Approximation</button>
+            </div>
+        </div>
+        <div class="controls-n-equation">
+            <div class="controls">
+                <label for="coefficients">Number of Fourier Coefficients:</label>
+                <input type="range" id="coefficients" min="1" max="1000" value="100">
+                <span id="coeffValue">100</span>
+            </div>
+            <div id="fourierEquation" class="equation-box"></div>
+                <script src="app.js"></script>
+            </div>
     </div>
-    <div class="buttons">
-        <button id="clearButton">Clear Drawing</button>
-        <button id="approximateButton">Start Approximation</button>
-    </div>
-    <!-- Added 'equation-box' class for styling -->
-    <div id="fourierEquation" class="equation-box"></div>
-    <script src="app.js"></script>
   </body>
 </html>
