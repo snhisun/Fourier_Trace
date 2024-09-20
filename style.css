@@ -1,0 +1,35 @@
+/* style.css */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+canvas {
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: crosshair;
+    margin-top: 20px;
+}
+
+.controls, .buttons {
+    margin-top: 20px;
+}
+
+input[type="range"] {
+    width: 300px;
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+}
