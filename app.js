@@ -60,6 +60,8 @@ function draw(e) {
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     path = [];
+    // Clear the Fourier equation display
+    document.getElementById('fourierEquation').innerHTML = '';
 }
 
 let fourierCoefficients = [];
@@ -111,6 +113,13 @@ function visualizeApproximation() {
     const drawingPoints = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Compute scaling factor
+    let maxRadiusSum = 0;
+    for (let i = 0; i < fourierCoefficients.length; i++) {
+        maxRadiusSum += fourierCoefficients[i].amp;
+    }
+    const scale = Math.min(canvas.width, canvas.height) / (2 * maxRadiusSum * 1.1); // 1.1 to add some padding
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -123,7 +132,7 @@ function visualizeApproximation() {
             let prevY = y;
 
             const freq = fourierCoefficients[i].freq;
-            const radius = fourierCoefficients[i].amp;
+            const radius = fourierCoefficients[i].amp * scale;
             const phase = fourierCoefficients[i].phase;
 
             x += radius * Math.cos(freq * time + phase);
@@ -167,8 +176,57 @@ function visualizeApproximation() {
             }
             ctx.strokeStyle = '#ff0000';
             ctx.stroke();
+
+            // Generate and display Fourier equation
+            generateFourierEquation(scale);
         }
     }
 
     animate();
+}
+
+function generateFourierEquation(scale) {
+    let equation = '\\begin{align*}\n';
+    equation += 'x(t) &= ';
+    let terms = [];
+    const maxTermsPerLine = 3;
+    let termsInLine = 0;
+
+    for (let i = 0; i < fourierCoefficients.length; i++) {
+        const coeff = fourierCoefficients[i];
+        const amp = (coeff.amp * scale).toFixed(2);
+        const freq = coeff.freq;
+        const phase = coeff.phase.toFixed(2);
+        let term = '';
+
+        if (amp < 0.01) continue; // Skip negligible terms
+
+        if (freq === 0) {
+            term = `${amp}`;
+        } else {
+            term = `${amp} \\cos(${freq} t ${phase >= 0 ? '+' : '-'} ${Math.abs(phase).toFixed(2)})`;
+        }
+
+        terms.push(term);
+        termsInLine++;
+
+        // Add line break after certain number of terms
+        if (termsInLine >= maxTermsPerLine) {
+            equation += terms.join(' + ') + ' \\\\\n&\\quad + ';
+            terms = [];
+            termsInLine = 0;
+        }
+    }
+
+    if (terms.length > 0) {
+        equation += terms.join(' + ');
+    } else {
+        // Remove the last '+ ' if no terms are left
+        equation = equation.replace(/ \+ $/, '');
+    }
+
+    equation += '\n\\end{align*}';
+
+    document.getElementById('fourierEquation').innerHTML = '\\(' + equation + '\\)';
+    MathJax.typeset(); // To typeset the equation
 }
