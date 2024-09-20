@@ -185,6 +185,7 @@ function visualizeApproximation() {
     animate();
 }
 
+/* commenting out equation generation
 function generateFourierEquation(scale) {
     let equation = '\\begin{align*}\n';
     equation += 'x(t) &= ';
@@ -230,3 +231,4 @@ function generateFourierEquation(scale) {
     document.getElementById('fourierEquation').innerHTML = '\\(' + equation + '\\)';
     MathJax.typeset(); // To typeset the equation
 }
+*/

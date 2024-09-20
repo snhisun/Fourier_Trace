@@ -63,6 +63,8 @@ button {
     border: 1px solid #ccc;   /* Optional: Add a border around the box */
     padding: 10px;            /* Optional: Add padding inside the box */
     background-color: #fff;   /* Optional: Set background color */
+    width: 0;
+    height: 0;
 }
 
 .equation-box * {
