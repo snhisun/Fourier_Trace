@@ -1,0 +1,5 @@
+- [ ] Make animation speed slider actually work lol
+- [ ] Fix approximations-being-smaller-than-drawings problem
+  - [ ] Include option to overlay original drawing
+  - [ ] "Keep" old approximations on canvas so you can compare them to each other?
+- [ ] Include option to have animation loop
